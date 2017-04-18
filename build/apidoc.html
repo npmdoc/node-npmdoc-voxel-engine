@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.voxel-engine.voxel-engine">
+            function <span class="apidocSignatureSpan"></span>voxel-engine
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.voxel-engine.super">
             function <span class="apidocSignatureSpan">voxel-engine.</span>super
             <span class="apidocSignatureSpan">()</span>
@@ -76,6 +85,120 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.voxel-engine" id="apidoc.module.voxel-engine">module voxel-engine</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.voxel-engine.voxel-engine" id="apidoc.element.voxel-engine.voxel-engine">
+        function <span class="apidocSignatureSpan"></span>voxel-engine
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Game(opts) {
+  if (!(this instanceof Game)) return new Game(opts)
+  var self = this
+  if (!opts) opts = {}
+  if (process.browser &#x26;&#x26; this.notCapable(opts)) return
+
+  // is this a client or a headless server
+  this.isClient = Boolean( (typeof opts.isClient !== &#x27;undefined&#x27;) ? opts.isClient : process.browser )
+
+  if (!(&#x27;generateChunks&#x27; in opts)) opts.generateChunks = true
+  this.generateChunks = opts.generateChunks
+  this.setConfigurablePositions(opts)
+  this.configureChunkLoading(opts)
+  this.setDimensions(opts)
+  this.THREE = THREE
+  this.vector = vector
+  this.glMatrix = glMatrix
+  this.arrayType = opts.arrayType || Uint8Array
+  this.cubeSize = 1 // backwards compat
+  this.chunkSize = opts.chunkSize || 32
+
+  // chunkDistance and removeDistance should not be set to the same thing
+  // as it causes lag when you go back and forth on a chunk boundary
+  this.chunkDistance = opts.chunkDistance || 2
+  this.removeDistance = opts.removeDistance || this.chunkDistance + 1
+
+  this.skyColor = opts.skyColor || 0xBFD1E5
+  this.antialias = opts.antialias
+  this.playerHeight = opts.playerHeight || 1.62
+  this.meshType = opts.meshType || &#x27;surfaceMesh&#x27;
+  this.mesher = opts.mesher || voxel.meshers.culled
+  this.materialType = opts.materialType || THREE.MeshLambertMaterial
+  this.materialParams = opts.materialParams || {}
+  this.items = []
+  this.voxels = voxel(this)
+  this.scene = new THREE.Scene()
+  this.view = opts.view || new voxelView(THREE, {
+    width: this.width,
+    height: this.height,
+    skyColor: this.skyColor,
+    antialias: this.antialias
+  })
+  this.view.bindToScene(this.scene)
+  this.camera = this.view.getCamera()
+  if (!opts.lightsDisabled) this.addLights(this.scene)
+
+  this.fogScale = opts.fogScale || 32
+  if (!opts.fogDisabled) this.scene.fog = new THREE.Fog( this.skyColor, 0.00025, this.worldWidth() * this.fogScale )
+
+  this.collideVoxels = collisions(
+    this.getBlock.bind(this),
+    1,
+    [Infinity, Infinity, Infinity],
+    [-Infinity, -Infinity, -Infinity]
+  )
+
+  this.timer = this.initializeTimer((opts.tickFPS || 16))
+  this.paused = false
+
+  this.spatial = new SpatialEventEmitter
+  this.region = regionChange(this.spatial, aabb([0, 0, 0], [1, 1, 1]), this.chunkSize)
+  this.voxelRegion = regionChange(this.spatial, 1)
+  this.chunkRegion = regionChange(this.spatial, this.chunkSize)
+  this.asyncChunkGeneration = false
+
+  // contains chunks that has had an update this tick. Will be generated right before redrawing the frame
+  this.chunksNeedsUpdate = {}
+  // contains new chunks yet to be generated. Handled by game.loadPendingChunks
+  this.pendingChunks = []
+
+  this.materials = texture({
+    game: this,
+    texturePath: opts.texturePath || &#x27;./textures/&#x27;,
+    materialType: opts.materialType || THREE.MeshLambertMaterial,
+    materialParams: opts.materialParams || {},
+    materialFlatColor: opts.materialFlatColor === true
+  })
+
+  this.materialNames = opts.materials || [[&#x27;grass&#x27;, &#x27;dirt&#x27;, &#x27;grass_dirt&#x27;], &#x27;brick&#x27;, &#x27;dirt&#x27;]
+
+  self.chunkRegion.on(&#x27;change&#x27;, function(newChunk) {
+    self.removeFarChunks()
+  })
+
+  if (this.isClient) this.materials.load(this.materialNames)
+
+  if (this.generateChunks) this.handleChunkGeneration()
+
+  // client side only after this point
+  if (!this.isClient) return
+
+  this.paused = true
+  this.initializeRendering(opts)
+
+  this.showAllChunks()
+
+  setTimeout(function() {
+    self.asyncChunkGeneration = &#x27;asyncChunkGeneration&#x27; in opts ? opts.asyncChunkGeneration : true
+  }, 2000)
+
+  this.initializeControls(opts)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>

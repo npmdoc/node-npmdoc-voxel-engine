@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/maxogden/voxel-engine"
-
-    >voxel-engine (v0.20.2)</a>
+    <a href="https://github.com/maxogden/voxel-engine">voxel-engine (v0.20.2)</a>
 </h1>
 <h4>make games with voxel.js</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.voxel-engine">module voxel-engine</a><ol>
 
@@ -98,12 +91,12 @@
   if (!(this instanceof Game)) return new Game(opts)
   var self = this
   if (!opts) opts = {}
-  if (process.browser &#x26;&#x26; this.notCapable(opts)) return
+  if (process.browser &amp;&amp; this.notCapable(opts)) return
 
   // is this a client or a headless server
-  this.isClient = Boolean( (typeof opts.isClient !== &#x27;undefined&#x27;) ? opts.isClient : process.browser )
+  this.isClient = Boolean( (typeof opts.isClient !== 'undefined') ? opts.isClient : process.browser )
 
-  if (!(&#x27;generateChunks&#x27; in opts)) opts.generateChunks = true
+  if (!('generateChunks' in opts)) opts.generateChunks = true
   this.generateChunks = opts.generateChunks
   this.setConfigurablePositions(opts)
   this.configureChunkLoading(opts)
@@ -123,7 +116,7 @@
   this.skyColor = opts.skyColor || 0xBFD1E5
   this.antialias = opts.antialias
   this.playerHeight = opts.playerHeight || 1.62
-  this.meshType = opts.meshType || &#x27;surfaceMesh&#x27;
+  this.meshType = opts.meshType || 'surfaceMesh'
   this.mesher = opts.mesher || voxel.meshers.culled
   this.materialType = opts.materialType || THREE.MeshLambertMaterial
   this.materialParams = opts.materialParams || {}
@@ -166,15 +159,15 @@
 
   this.materials = texture({
     game: this,
-    texturePath: opts.texturePath || &#x27;./textures/&#x27;,
+    texturePath: opts.texturePath || './textures/',
     materialType: opts.materialType || THREE.MeshLambertMaterial,
     materialParams: opts.materialParams || {},
     materialFlatColor: opts.materialFlatColor === true
   })
 
-  this.materialNames = opts.materials || [[&#x27;grass&#x27;, &#x27;dirt&#x27;, &#x27;grass_dirt&#x27;], &#x27;brick&#x27;, &#x27;dirt&#x27;]
+  this.materialNames = opts.materials || [['grass', 'dirt', 'grass_dirt'], 'brick', 'dirt']
 
-  self.chunkRegion.on(&#x27;change&#x27;, function(newChunk) {
+  self.chunkRegion.on('change', function(newChunk) {
     self.removeFarChunks()
   })
 
@@ -191,7 +184,7 @@
   this.showAllChunks()
 
   setTimeout(function() {
-    self.asyncChunkGeneration = &#x27;asyncChunkGeneration&#x27; in opts ? opts.asyncChunkGeneration : true
+    self.asyncChunkGeneration = 'asyncChunkGeneration' in opts ? opts.asyncChunkGeneration : true
   }, 2000)
 
   this.initializeControls(opts)
@@ -223,3 +216,4 @@
     ]
 </div>
 </div>
+</body></html>
