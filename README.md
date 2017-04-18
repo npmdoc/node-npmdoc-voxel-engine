@@ -1,9 +1,14 @@
-# api documentation for  [voxel-engine (v0.20.2)](https://github.com/maxogden/voxel-engine)  [![npm package](https://img.shields.io/npm/v/npmdoc-voxel-engine.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-voxel-engine) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-voxel-engine.svg)](https://travis-ci.org/npmdoc/node-npmdoc-voxel-engine)
+# npmdoc-voxel-engine
+
+#### api documentation for  [voxel-engine (v0.20.2)](https://github.com/maxogden/voxel-engine)  [![npm package](https://img.shields.io/npm/v/npmdoc-voxel-engine.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-voxel-engine) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-voxel-engine.svg)](https://travis-ci.org/npmdoc/node-npmdoc-voxel-engine)
+
 #### make games with voxel.js
 
-[![NPM](https://nodei.co/npm/voxel-engine.png?downloads=true)](https://www.npmjs.com/package/voxel-engine)
+[![NPM](https://nodei.co/npm/voxel-engine.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/voxel-engine)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-voxel-engine/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-voxel-engine_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-voxel-engine/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-voxel-engine/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-voxel-engine/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-voxel-engine/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-voxel-engine/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-voxel-engine/build/screenCapture.npmPackageListing.svg)
 
@@ -22,17 +27,14 @@
     "contributors": [
         {
             "name": "Max Ogden",
-            "email": "max@maxogden.com",
             "url": "https://github.com/maxogden"
         },
         {
             "name": "Kumavis",
-            "email": "a.aa.akio.aaron@gmail.com",
             "url": "https://github.com/kumavis"
         },
         {
             "name": "Deathcap",
-            "email": "deathcap@gmx.co.uk",
             "url": "https://github.com/deathcap"
         }
     ],
@@ -71,17 +73,14 @@
     "homepage": "https://github.com/maxogden/voxel-engine",
     "maintainers": [
         {
-            "name": "maxogden",
-            "email": "max@maxogden.com"
+            "name": "maxogden"
         },
         {
-            "name": "deathcap",
-            "email": "deathcap@gmx.co.uk"
+            "name": "deathcap"
         }
     ],
     "name": "voxel-engine",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/maxogden/voxel-engine.git"
@@ -91,29 +90,6 @@
     },
     "version": "0.20.2"
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module voxel-engine](#apidoc.module.voxel-engine)
-1.  [function <span class="apidocSignatureSpan">voxel-engine.</span>super ()](#apidoc.element.voxel-engine.super)
-
-
-
-# <a name="apidoc.module.voxel-engine"></a>[module voxel-engine](#apidoc.module.voxel-engine)
-
-#### <a name="apidoc.element.voxel-engine.super"></a>[function <span class="apidocSignatureSpan">voxel-engine.</span>super ()](#apidoc.element.voxel-engine.super)
-- description and source-code
-```javascript
-function EventEmitter() {
-  EventEmitter.init.call(this);
-}
-```
-- example usage
-```shell
-n/a
 ```
 
 
